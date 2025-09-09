@@ -1,0 +1,18 @@
+# Versión simplificada para redes corporativas con SSL
+torch
+torchvision
+opencv-python
+numpy
+matplotlib
+pandas
+ultralytics
+scikit-image
+scikit-learn
+tqdm
+Pillow
+openpyxl
+
+# Opcional - para funcionalidades avanzadas
+# segmentation-models-pytorch
+# albumentations
+# streamlit
