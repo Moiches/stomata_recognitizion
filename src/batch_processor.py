@@ -27,7 +27,12 @@ class BatchStomataProcessor:
             output_dir: Directorio de salida
             pixel_size_um: Tamaño del píxel en micrómetros
         """
-        self.analyzer = StomataAnalyzer(yolo_model_path, unet_model_path)
+        self.analyzer = StomataAnalyzer(
+            yolo_model_path=yolo_model_path,
+            unet_model_path=unet_model_path,
+            use_yolo=True,
+            use_unet=True
+        )
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True, parents=True)
         self.pixel_size_um = pixel_size_um
@@ -309,39 +314,39 @@ class BatchStomataProcessor:
         report_path = self.output_dir / "reports" / filename
 
         with open(report_path, 'w', encoding='utf-8') as f:
-            f.write("REPORTE DE ANÁLISIS DE ESTOMAS\\n")
-            f.write("=" * 50 + "\\n\\n")
+            f.write("REPORTE DE ANÁLISIS DE ESTOMAS\n")
+            f.write("=" * 50 + "\n\n")
 
             if consolidated_report:
-                f.write(f"Total de imágenes analizadas: {consolidated_report['total_images']}\\n")
-                f.write(f"Total de estomas detectados: {consolidated_report['total_stomata_detected']}\\n\\n")
+                f.write(f"Total de imágenes analizadas: {consolidated_report['total_images']}\n")
+                f.write(f"Total de estomas detectados: {consolidated_report['total_stomata_detected']}\n\n")
 
-                f.write("ESTADÍSTICAS GENERALES:\\n")
-                f.write("-" * 25 + "\\n")
+                f.write("ESTADÍSTICAS GENERALES:\n")
+                f.write("-" * 25 + "\n")
 
                 stats = consolidated_report['statistics']
 
                 if 'stomata_count' in stats:
                     sc = stats['stomata_count']
-                    f.write(f"Conteo de estomas por imagen:\\n")
-                    f.write(f"  - Promedio: {sc['mean']:.2f} ± {sc['std']:.2f}\\n")
-                    f.write(f"  - Rango: {sc['min']:.0f} - {sc['max']:.0f}\\n")
-                    f.write(f"  - Mediana: {sc['median']:.2f}\\n\\n")
+                    f.write(f"Conteo de estomas por imagen:\n")
+                    f.write(f"  - Promedio: {sc['mean']:.2f} ± {sc['std']:.2f}\n")
+                    f.write(f"  - Rango: {sc['min']:.0f} - {sc['max']:.0f}\n")
+                    f.write(f"  - Mediana: {sc['median']:.2f}\n\n")
 
                 if 'stomatal_density' in stats:
                     sd = stats['stomatal_density']
-                    f.write(f"Densidad estomatal (estomas/mm²):\\n")
-                    f.write(f"  - Promedio: {sd['mean']:.2f} ± {sd['std']:.2f}\\n")
-                    f.write(f"  - Rango: {sd['min']:.2f} - {sd['max']:.2f}\\n")
-                    f.write(f"  - Mediana: {sd['median']:.2f}\\n\\n")
+                    f.write(f"Densidad estomatal (estomas/mm²):\n")
+                    f.write(f"  - Promedio: {sd['mean']:.2f} ± {sd['std']:.2f}\n")
+                    f.write(f"  - Rango: {sd['min']:.2f} - {sd['max']:.2f}\n")
+                    f.write(f"  - Mediana: {sd['median']:.2f}\n\n")
 
-            f.write("RESULTADOS INDIVIDUALES:\\n")
-            f.write("-" * 25 + "\\n")
+            f.write("RESULTADOS INDIVIDUALES:\n")
+            f.write("-" * 25 + "\n")
             for result in results:
-                f.write(f"Imagen: {result['image_name']}\\n")
-                f.write(f"  - Estomas: {result['total_stomata']}\\n")
-                f.write(f"  - Densidad: {result['stomatal_density']:.2f} est/mm²\\n")
-                f.write(f"  - Área promedio: {result['avg_area']:.1f} px²\\n")
-                f.write("\\n")
+                f.write(f"Imagen: {result['image_name']}\n")
+                f.write(f"  - Estomas: {result['total_stomata']}\n")
+                f.write(f"  - Densidad: {result['stomatal_density']:.2f} est/mm²\n")
+                f.write(f"  - Área promedio: {result['avg_area']:.1f} px²\n")
+                f.write("\n")
 
         print(f"Reporte resumen generado en {report_path}")

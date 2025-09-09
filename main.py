@@ -6,7 +6,7 @@ import os
 import argparse
 
 # Añadir el directorio src al path
-sys.path.append(os.path.join(os.path.dirname(_file_), 'src'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from gui_app import StomataGUI
 from batch_processor import BatchStomataProcessor
@@ -116,5 +116,5 @@ def main():
             detector.cleanup()
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
