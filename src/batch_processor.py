@@ -15,10 +15,10 @@ from stomata_analyzer import StomataAnalyzer, StomataAnalysis
 
 class BatchStomataProcessor:
     def _init_(self,
-               yolo_model_path: str = None,
-               unet_model_path: str = None,
-               output_dir: str = "output",
-               pixel_size_um: float = 1.0):
+                 yolo_model_path: str = None,
+                 unet_model_path: str = None,
+                 output_dir: str = "output",
+                 pixel_size_um: float = 1.0):
         """
         Inicializa el procesador en lote
         Args:

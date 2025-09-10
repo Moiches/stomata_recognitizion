@@ -42,7 +42,10 @@ def main():
             return
 
         print(f"Analizando imagen individual: {args.input}")
-        analyzer = StomataAnalyzer(args.yolo_model, args.unet_model)
+        analyzer = StomataAnalyzer(
+            yolo_model_path=args.yolo_model,
+            unet_model_path=args.unet_model
+        )
 
         import cv2
         image = cv2.imread(args.input)
