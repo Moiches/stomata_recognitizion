@@ -1,0 +1,23 @@
+{
+  "dataset_name": "aglaia_cucullata",
+  "created_date": "2025-09-10T20:59:37.782344",
+  "description": "Dataset de estomas: aglaia_cucullata",
+  "classes": [
+    "stomata"
+  ],
+  "num_classes": 1,
+  "image_extensions": [
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".bmp",
+    ".tiff"
+  ],
+  "annotation_format": "YOLO",
+  "statistics": {
+    "total_images": 0,
+    "annotated_images": 0,
+    "total_annotations": 0,
+    "avg_annotations_per_image": 0.0
+  }
+}

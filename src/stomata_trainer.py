@@ -303,11 +303,10 @@ class StomataYOLOTrainer:
 
 def create_sample_annotation_tool():
     """
-    Crea una herramienta simple para anotar imágenes de estomas
+    Crea una herramienta simple para anotar imagenes de estomas
     """
-    annotation_code = '''
-"""
-Herramienta simple para anotar estomas en imágenes
+    annotation_code = '''"""
+Herramienta simple para anotar estomas en imagenes
 Uso: python annotate_stomata.py <imagen> <output_dir>
 """
 import cv2
@@ -375,9 +374,9 @@ class StomataAnnotator:
 
         print("Instrucciones:")
         print("- Arrastra para crear cajas alrededor de estomas")
-        print("- Presiona 's' para guardar")
-        print("- Presiona 'r' para reiniciar")
-        print("- Presiona 'q' para salir")
+        print("- Presiona s para guardar")
+        print("- Presiona r para reiniciar")
+        print("- Presiona q para salir")
 
         while True:
             key = cv2.waitKey(1) & 0xFF
@@ -401,10 +400,10 @@ if __name__ == "__main__":
     annotator.annotate()
 '''
 
-    with open("annotate_stomata.py", "w") as f:
+    with open("annotate_stomata.py", "w", encoding='utf-8') as f:
         f.write(annotation_code)
 
-    print("📝 Herramienta de anotación creada: annotate_stomata.py")
+    print("Herramienta de anotacion creada: annotate_stomata.py")
 
 
 if __name__ == "__main__":
